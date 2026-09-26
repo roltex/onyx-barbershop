@@ -1,0 +1,27 @@
+{
+  "name": "onyx-barbers",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/*"
+  ],
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "concurrently -k -n API,WEB \"npm run dev -w @onyx/api\" \"npm run dev -w @onyx/web\"",
+    "build": "npm run build -w @onyx/web",
+    "start": "concurrently -k -n API,WEB \"npm run start -w @onyx/api\" \"npm run start -w @onyx/web\"",
+    "db:migrate": "npm run migrate -w @onyx/api",
+    "db:seed": "npm run seed -w @onyx/api",
+    "test": "npm run test -w @onyx/api",
+    "typecheck": "npm run typecheck -w @onyx/web",
+    "owner:create": "npm run owner:create -w @onyx/api",
+    "owner:reset": "npm run owner:reset -w @onyx/api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "prettier": "^3.9.9"
+  }
+}

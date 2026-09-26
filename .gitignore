@@ -1,0 +1,14 @@
+node_modules/
+.next/
+.env
+.env.local
+*.sqlite*
+*.log
+coverage/
+test-results/
+playwright-report/
+*.tsbuildinfo
+backups/
+# Local design sources (copied into apps/web/public when used)
+New Design Assets/
+Onix-logo .png

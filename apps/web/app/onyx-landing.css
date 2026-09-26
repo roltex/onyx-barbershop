@@ -1,0 +1,699 @@
+/* Onyx landing — matches New Design Assets mockup */
+.onyx {
+  --onyx-bg: #0a0a09;
+  --onyx-panel: #11110f;
+  --onyx-card: #161512;
+  --onyx-line: #2a241c;
+  --onyx-gold: #d8a75f;
+  --onyx-gold-hot: #f1d39b;
+  --onyx-gold-deep: #a87c3f;
+  --onyx-text: #f5efe4;
+  --onyx-muted: #9a9082;
+  --onyx-serif: "Playfair Display", "Noto Sans Georgian", Georgia, serif;
+  --onyx-sans: "Inter", "Noto Sans Georgian", system-ui, sans-serif;
+  background: var(--onyx-bg);
+  color: var(--onyx-text);
+  font-family: var(--onyx-sans);
+  min-height: 100vh;
+}
+.onyx a {
+  color: inherit;
+  text-decoration: none;
+}
+.onyx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  border: 0;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #f1d39b 0%, #d8a75f 48%, #a87c3f 100%);
+  color: #1a140c;
+  font-family: var(--onyx-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.onyx-btn:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+.onyx-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border: 1px solid var(--onyx-gold);
+  border-radius: 4px;
+  color: var(--onyx-gold-hot);
+  font-size: 0.92rem;
+  font-weight: 500;
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.onyx-btn-ghost:hover {
+  background: #c5a05918;
+  color: #f0d9a8;
+}
+.onyx-btn-block {
+  width: 100%;
+  margin-top: 18px;
+  padding: 16px 26px;
+}
+.onyx-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 18px;
+  color: var(--onyx-gold);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.onyx-kicker span {
+  display: inline-block;
+  width: 42px;
+  height: 1px;
+  background: var(--onyx-gold);
+}
+
+/* Header */
+.onyx-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 88px;
+  padding: 0 clamp(16px, 4vw, 64px);
+  background: #0a0a09f2;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1a1612;
+  overflow: visible;
+}
+.onyx-logo {
+  position: relative;
+  z-index: 50;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin-block: -18px;
+  filter: drop-shadow(0 8px 20px #000000aa);
+}
+.onyx-logo .brand-mark-img {
+  height: clamp(72px, 8vw, 96px) !important;
+  width: auto !important;
+  mix-blend-mode: normal;
+}
+.onyx-header nav {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  gap: clamp(12px, 1.8vw, 24px);
+  font-size: 0.86rem;
+  color: #cfc4b4;
+  white-space: nowrap;
+}
+.onyx-header-actions .onyx-btn {
+  padding: 12px 18px;
+  white-space: nowrap;
+}
+.onyx-header nav a {
+  position: relative;
+  padding: 6px 0;
+}
+.onyx-header nav a:hover,
+.onyx-header nav a.active {
+  color: var(--onyx-text);
+}
+.onyx-header nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--onyx-gold);
+}
+.onyx-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.onyx-menu-btn {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: var(--onyx-text);
+  cursor: pointer;
+  padding: 6px;
+}
+
+/* Hero — 50% copy left, photo flush right with soft fade */
+.onyx-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 560px;
+  height: min(calc(100svh - 88px), 680px);
+  max-height: 680px;
+  padding: 0;
+  overflow: hidden;
+  background: var(--onyx-bg);
+}
+.onyx-hero-media {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+.onyx-hero-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    #0a0a09 0%,
+    #0a0a09cc 8%,
+    #0a0a0900 28%,
+    transparent 45%
+  );
+  pointer-events: none;
+}
+.onyx-hero-media > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
+  display: block;
+}
+.onyx-hero-copy {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 50%;
+  max-width: 50%;
+  flex: 0 0 50%;
+  padding: clamp(40px, 6vh, 72px) clamp(24px, 4vw, 64px)
+    clamp(40px, 6vh, 72px) clamp(20px, 5vw, 72px);
+  margin-right: auto;
+}
+.onyx-hero-copy h1 {
+  margin: 0 0 22px;
+  font-family: var(--onyx-serif);
+  font-size: clamp(2.9rem, 6.2vw, 5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #f7f1e6;
+}
+.onyx-hero-lead {
+  margin: 0 0 34px;
+  max-width: 42ch;
+  color: #c8beae;
+  font-size: clamp(1rem, 1.15vw, 1.12rem);
+  line-height: 1.7;
+}
+.onyx-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* Features */
+.onyx-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 12px clamp(20px, 5vw, 72px) 0;
+  padding: 28px 8px;
+  border-top: 1px solid var(--onyx-line);
+  border-bottom: 1px solid var(--onyx-line);
+}
+.onyx-feature {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 8px 28px;
+}
+.onyx-feature-rule {
+  position: absolute;
+  left: 0;
+  top: 12%;
+  bottom: 12%;
+  width: 1px;
+  background: var(--onyx-gold);
+  opacity: 0.55;
+}
+.onyx-feature img {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.onyx-feature h3 {
+  margin: 0 0 6px;
+  color: var(--onyx-gold-hot);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+.onyx-feature p {
+  margin: 0;
+  color: var(--onyx-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* Sections */
+.onyx-section {
+  padding: clamp(64px, 9vw, 100px) clamp(20px, 5vw, 72px);
+}
+.onyx-section-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+.onyx-section-head .onyx-kicker {
+  justify-content: center;
+}
+.onyx-section-head h2 {
+  margin: 0 0 14px;
+  font-family: var(--onyx-serif);
+  font-size: clamp(2rem, 3.8vw, 3.1rem);
+  font-weight: 500;
+  color: #f7f1e6;
+}
+.onyx-section-lead {
+  margin: 0 auto;
+  color: var(--onyx-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 46ch;
+}
+
+/* Services */
+.onyx-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.onyx-service-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px 24px 22px;
+  background: var(--onyx-card);
+  border: 1px solid #1f1a14;
+  border-radius: 6px;
+  min-height: 240px;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.onyx-service-card:hover {
+  border-color: #d8a75f66;
+  transform: translateY(-2px);
+}
+.onyx-service-card.selected {
+  border-color: var(--onyx-gold);
+  box-shadow: inset 0 0 0 1px #d8a75f55;
+  background: #d8a75f12;
+}
+.booking-service-grid {
+  margin-bottom: 8px;
+}
+.booking-service-grid .onyx-service-card {
+  background: var(--surface);
+  border-color: #d8a75f28;
+  color: var(--text);
+}
+.booking-service-grid .onyx-service-card h3 {
+  color: var(--text);
+  font-family: "Playfair Display", "Noto Sans Georgian", Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0;
+}
+.booking-service-grid .onyx-service-card p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  flex: 1;
+}
+.onyx-service-card img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+.onyx-service-card h3 {
+  margin: 0;
+  font-family: var(--onyx-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: #f7f1e6;
+}
+.onyx-service-card p {
+  margin: 0;
+  color: var(--onyx-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  flex: 1;
+}
+.onyx-card-arrow {
+  color: var(--onyx-gold);
+  font-size: 1.2rem;
+  margin-top: 8px;
+}
+
+/* Barbers */
+.onyx-barber-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.onyx-barber-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 3 / 4;
+  background: #111;
+}
+.onyx-barber-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.onyx-barber-meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 28px 22px 22px;
+  background: linear-gradient(0deg, #000000ee 0%, #00000088 55%, transparent 100%);
+}
+.onyx-barber-meta h3 {
+  margin: 0 0 4px;
+  font-family: var(--onyx-serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: #fff;
+}
+.onyx-barber-meta p {
+  margin: 0;
+  color: var(--onyx-gold-hot);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+}
+.onyx-barber-meta::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--onyx-gold);
+  margin-bottom: 12px;
+}
+
+/* Booking panel */
+.onyx-book-panel {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 40px;
+  align-items: center;
+  padding: clamp(28px, 4vw, 48px);
+  border: 1px solid #c5a05944;
+  border-radius: 8px;
+  background:
+    radial-gradient(ellipse at 10% 20%, #c5a05914, transparent 45%),
+    #0a0a0a;
+}
+.onyx-book-copy h2 {
+  margin: 0 0 14px;
+  font-family: var(--onyx-serif);
+  font-size: clamp(1.9rem, 3.2vw, 2.8rem);
+  font-weight: 500;
+}
+.onyx-book-copy p:last-child {
+  margin: 0;
+  color: var(--onyx-muted);
+  max-width: 36ch;
+  line-height: 1.7;
+}
+.onyx-book-fields {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+.onyx-book-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.onyx-book-form label span {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--onyx-gold);
+  font-weight: 600;
+}
+.onyx-book-form select,
+.onyx-book-form input {
+  width: 100%;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #2a241c;
+  border-radius: 4px;
+  background: #101010;
+  color: var(--onyx-text);
+  font: inherit;
+  color-scheme: dark;
+}
+.onyx-book-form select:focus,
+.onyx-book-form input:focus {
+  outline: 1px solid var(--onyx-gold);
+  border-color: var(--onyx-gold);
+}
+
+/* Footer */
+.onyx-footer {
+  border-top: 1px solid var(--onyx-line);
+  padding: 48px clamp(20px, 5vw, 72px) 28px;
+  background: #030303;
+}
+.onyx-footer-top {
+  display: grid;
+  grid-template-columns: 1.1fr 1.6fr auto;
+  gap: 32px;
+  align-items: center;
+  padding-bottom: 28px;
+}
+.onyx-footer-logo .brand-mark-img {
+  height: 56px !important;
+  mix-blend-mode: normal;
+}
+.onyx-footer-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 40px;
+}
+.onyx-footer-info > div {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.onyx-ico {
+  color: var(--onyx-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.onyx-footer-info strong {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--onyx-gold-hot);
+  margin-bottom: 4px;
+}
+.onyx-footer-info p {
+  margin: 0;
+  color: var(--onyx-muted);
+  font-size: 0.92rem;
+}
+.onyx-social {
+  display: flex;
+  gap: 14px;
+}
+.onyx-social a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #2a241c;
+  border-radius: 999px;
+  color: #ddd;
+  transition: border-color 0.2s, color 0.2s;
+}
+.onyx-social a:hover {
+  border-color: var(--onyx-gold);
+  color: var(--onyx-gold-hot);
+}
+.onyx-footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid #c5a05933;
+  color: #7a7166;
+  font-size: 0.82rem;
+}
+.onyx-footer-bottom > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+.onyx-footer-bottom a:hover {
+  color: var(--onyx-gold-hot);
+}
+
+@media (max-width: 1100px) {
+  .onyx-service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .onyx-barber-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .onyx-hero {
+    min-height: 520px;
+    height: min(calc(100svh - 88px), 620px);
+    max-height: 620px;
+  }
+  .onyx-hero-media {
+    width: 50%;
+  }
+  .onyx-hero-copy {
+    width: 50%;
+    max-width: 50%;
+    flex: 0 0 50%;
+  }
+  .onyx-book-panel {
+    grid-template-columns: 1fr;
+  }
+  .onyx-footer-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .onyx-header {
+    height: 76px;
+  }
+  .onyx-logo {
+    margin-block: -10px;
+  }
+  .onyx-logo .brand-mark-img {
+    height: clamp(56px, 16vw, 72px) !important;
+  }
+  .onyx-header nav {
+    display: none;
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px 0;
+    background: #0a0a0a;
+    border-bottom: 1px solid #1a1612;
+  }
+  .onyx-header nav.open {
+    display: flex;
+  }
+  .onyx-header nav a {
+    padding: 14px clamp(20px, 5vw, 72px);
+  }
+  .onyx-menu-btn {
+    display: inline-flex;
+  }
+  .onyx-hero {
+    min-height: 560px;
+    height: auto;
+    max-height: none;
+    align-items: flex-end;
+  }
+  .onyx-hero-media {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+  .onyx-hero-media::before {
+    background: linear-gradient(
+      180deg,
+      #0a0a09aa 0%,
+      #0a0a0940 30%,
+      #0a0a09cc 62%,
+      #0a0a09 100%
+    );
+  }
+  .onyx-hero-media > img {
+    object-position: right 35%;
+    min-height: 560px;
+  }
+  .onyx-hero-copy {
+    width: 100%;
+    max-width: none;
+    flex: 1 1 auto;
+    padding: 48px clamp(20px, 5vw, 40px) 36px;
+  }
+  .onyx-hero-copy h1 {
+    font-size: clamp(2.2rem, 9vw, 3rem);
+  }
+  .onyx-features {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .onyx-feature-rule {
+    display: none;
+  }
+  .onyx-feature {
+    padding: 8px 4px;
+  }
+  .onyx-barber-grid {
+    grid-template-columns: 1fr;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  .onyx-book-fields {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .onyx-service-grid {
+    grid-template-columns: 1fr;
+  }
+  .onyx-header .onyx-btn {
+    padding: 11px 14px;
+    font-size: 0.8rem;
+  }
+  .onyx-logo .brand-mark-img {
+    height: 54px !important;
+  }
+}
