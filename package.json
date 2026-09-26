@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "onyx-barbers",
   "private": true,
   "version": "1.0.0",
@@ -12,7 +12,7 @@
     "setup": "node scripts/setup.mjs",
     "dev": "concurrently -k -n API,WEB \"npm run dev -w @onyx/api\" \"npm run dev -w @onyx/web\"",
     "build": "npm run build -w @onyx/web",
-    "start": "node scripts/hostinger-start.mjs",
+    "start": "node apps/web/hostinger-server.mjs",
     "start:local": "concurrently -k -n API,WEB \"npm run start -w @onyx/api\" \"npm run start -w @onyx/web\"",
     "db:migrate": "npm run migrate -w @onyx/api",
     "db:seed": "npm run seed -w @onyx/api",

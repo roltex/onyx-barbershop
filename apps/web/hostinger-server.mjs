@@ -1,12 +1,12 @@
-import { spawn } from "node:child_process";
+﻿import { spawn } from "node:child_process";
 import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse } from "node:url";
 import next from "next";
 
-const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const webDir = path.join(root, "apps/web");
+const here = path.dirname(fileURLToPath(import.meta.url));
+const root = path.resolve(here, "../..");
 const apiDir = path.join(root, "apps/api");
 const port = Number(process.env.PORT || 3000);
 const hostname = process.env.HOSTNAME || "0.0.0.0";
@@ -22,11 +22,6 @@ const api = spawn(process.execPath, ["src/server.js"], {
     TRUST_PROXY: "1",
   },
   stdio: ["ignore", "inherit", "inherit"],
-  detached: false,
-});
-
-api.on("error", (err) => {
-  console.error("API process failed:", err);
 });
 
 api.on("exit", (code, signal) => {
@@ -34,27 +29,12 @@ api.on("exit", (code, signal) => {
   process.exit(code || 1);
 });
 
-const app = next({
-  dev: false,
-  dir: webDir,
-  hostname,
-  port,
-});
+const app = next({ dev: false, hostname, port });
 const handle = app.getRequestHandler();
-
 await app.prepare();
 
-const server = http.createServer((req, res) => {
-  handle(req, res, parse(req.url, true));
-});
-
-server.listen(port, hostname, () => {
-  console.log(`Onyx web listening on http://${hostname}:${port}`);
-});
-
-for (const signal of ["SIGINT", "SIGTERM"]) {
-  process.on(signal, () => {
-    server.close();
-    api.kill(signal);
+http
+  .createServer((req, res) => handle(req, res, parse(req.url, true)))
+  .listen(port, hostname, () => {
+    console.log(`Onyx web on http://${hostname}:${port}`);
   });
-}
